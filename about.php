@@ -74,7 +74,12 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-md-7 text-white">
                     <h1>Sobre Nosotros Us</h1>
                     <p>
-                        Somos un Sistema de Gestión de Torneos para la Universidad Distrital.
+                        Somos un Sistema de gestión para torneos en la Universidad Distrital, con el objetivo de
+                        servir a la comunidad estudiantil. Esta plataforma tiene la misión de proporcionar a la comunidad
+                        un sistema que los mantega informados sobre los torneos que se desarrollan en la universidad.
+                        <br> <br>
+                        Estamos comprometidos con brindar una información eficiente y eficaz sobre el amplio
+                        espectro de torneos y eventos deportivos, culturales y académicos presentes en la universidad.
                     </p>
                 </div>
                 <div class="col-md-4">
