@@ -80,7 +80,7 @@ https://templatemo.com/tm-559-zay-shop
                 <?php
                 include('./consultarSQL.php');
                 $res=consultarJugadoresAdm();
-
+                $i=1;
                 foreach($res as $row){?>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
@@ -98,7 +98,11 @@ https://templatemo.com/tm-559-zay-shop
                             
 
                             <h2 class="h2 text-decoration-none text-dark">
-                                <?php echo $row['id']?>.  <?php echo $row['nombre']?>
+                            <?php 
+                                    echo $i;
+                                    $i++;
+
+                                ?>. <?php echo $row['nombre']?>
                             </h2>
                             <p class="card-text">
                                 Código: <?php echo $row['codigo_carrera']?> <br>

@@ -45,7 +45,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">Sobre Nosotros</a>
+                            <a class="nav-link" href="./Administrador/organizador.php">Organizadores</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="torneos.php">Torneos</a>
@@ -129,6 +129,29 @@ https://templatemo.com/tm-559-zay-shop
     </section>
     <!-- End Featured Product -->
 
+     <!-- Banner -->
+     <section class="bg-success py-5">
+        <div class="container">
+            <div class="row align-items-center py-5">
+                <div class="col-md-7 text-white">
+                    <h1>Sobre Nosotros</h1>
+                    <p>
+                        Somos un Sistema de gestión para torneos en la Universidad Distrital, con el objetivo de
+                        servir a la comunidad estudiantil. Esta plataforma tiene la misión de proporcionar a la comunidad
+                        un sistema que los mantega informados sobre los torneos que se desarrollan en la universidad.
+                        <br> <br>
+                        Estamos comprometidos con brindar una información eficiente y eficaz sobre el amplio
+                        espectro de torneos y eventos deportivos, culturales y académicos presentes en la universidad.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <img src="assets/img/trophy.png" alt="Sobre Nosotros y los Torneos">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Close Banner -->
 
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">

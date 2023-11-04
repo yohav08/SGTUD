@@ -42,7 +42,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="../index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../about.php">Sobre Nosotros</a>
+                            <a class="nav-link" href="./organizador.php">Organizadores</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../torneos.php">Torneos</a>
@@ -67,67 +67,85 @@ https://templatemo.com/tm-559-zay-shop
     </nav>
     <!-- Close Header -->
 
+    <!-- Start Featured Product -->
+    <section class="bg-light">
+        <div class="container py-5">
+            <div class="row text-center py-3">
+                <div class="col-lg-6 m-auto">
+                    <h1 class="h1">ORGANIZADORES</h1>
 
+                </div>
+            </div>
+            <div class="row">
+                <?php
+                include('./consultarSQL.php');
+                $res=consultarOrganizadoresAdm();
 
-    <!-- Formulario Modificar Producto-->
-    <?php 
-    include('./consultarSQL.php');
-    $cod=$_GET['id'];
-    $res=buscarjugadores($cod);
-    foreach($res as $row){
-    ?>
-    <div class="container"> <br><br>
-        <h2 class="text-black">Modificar Jugador</h2>
-        <form action="./modificarJugador.php" method="GET" class="row g-3">
-            <div class="col-2">
-                <label for="txt_Id" class="form-label">Id:</label>
-                <input type="text" class="form-control" name="txt_Id" value="<?php echo $row['id']?>" readonly>
-            </div>
-            <div class="col-4">
-                <label for="txt_codCarrera" class="form-label">Código: </label>
-                <input type="text" class="form-control" name="txt_codCarrera" value="<?php echo $row['codigo_carrera']?>">
-            </div>
-            <div class="col-6">
-                <label for="txt_nombre" class="form-label">Nombre: </label>
-                <input type="text" class="form-control" name="txt_nombre"  value="<?php echo $row['nombre']?>">
-            </div>
-            <div class="col-4">
-                <label for="txt_telefono" class="form-label">Teléfono: </label>
-                <input type="text" class="form-control" name="txt_telefono" value="<?php echo $row['telefono']?>">
-            </div>
-            <div class="col-4">
-                <label for="txt_correo" class="form-label">Correo: </label>
-                <input type="text" class="form-control" name="txt_correo" value="<?php echo $row['correo']?>">
-            </div>
-            <div class="col-4">
-                <label for="txt_carrera" class="form-label">Carrera</label>
-                <input type="text" class="form-control" name="txt_carrera" value="<?php echo $row['carrera']?>">
+                $i=1;
+                foreach($res as $row){?>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                    
+
+                        <div class="card-body">
+                            <img src="../assets/img/organizador.png" class="card-img-top" style="max-width: 30%; display: block; margin: auto; " >
+
+                            <h2 class="h2 text-decoration-none text-dark">
+                                <?php 
+                                    echo $i;
+                                    $i++;
+
+                                ?>. <?php echo $row['nombre']?>
+                            </h2>
+                            <p class="card-text">
+                                Código: <?php echo $row['codigo_carrera']?> <br>
+                                Teléfono: <?php echo $row['telefono']?><br>
+                                <?php echo $row['correo']?> <br>
+                                Habilitado: <?php echo $row['habilitado']?>                               
+                            </p>
+                    
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <!-- Modificar JUGADOR-->
+                                <a class="btn btn-secondary" href="./modificar_organizador.php?id=<?php echo $row['id']?>"> Editar
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                    </svg>
+                                </a>  &nbsp&nbsp&nbsp
+                                <!-- FIN Modificar JUGADOR-->
+                                    
+                                <!-- Eliminar JUGADOR-->
+                                <a class="btn btn-danger" href="./eliminarOrganizador.php?id=<?php echo $row['id']?>"> Eliminar
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                    </svg>
+                                </a>
+                                <!-- FIN Eliminar JUGADOR -->
+
+                                
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+                <?php }?>
             </div>
 
-            <div class="col-6">
-                <label for="txt_genero" class="form-label">Género</label>
-                <select name="txt_genero" class="form-control" required>
-                    <option value="F">Femenino</option>
-                    <option value="M">Masculino</option>
-                </select>
+            <form action="" method="GET">
+                <input type="hidden" name="product-title" value="Activewear">
+                <div class="row pb-3">
+                    <div class="col d-grid">
+                        <a role="button" href="./crear_organizador.php" class="btn btn-success btn-lg">Agregar Organizador</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="col-6">
-                <label for="txt_habilitado" class="form-label">Habilitado</label>
-                <select name="txt_habilitado" class="form-control"required>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-            </div>
+            </form>
+        </div>
+    </section>
+    <!-- End Featured Product -->
 
-            <?php }?>
-            <center>
-            <input type="submit" value="Modificar Jugador" class="btn btn-primary">
-            </center>
-        </form>
-    </div>
-    <div style= "margin: 12% auto;"></div>
-    <!-- FIN Formulario Crear Producto-->
 
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
@@ -178,7 +196,6 @@ https://templatemo.com/tm-559-zay-shop
     <script src="../assets/js/templatemo.js"></script>
     <script src="../assets/js/custom.js"></script>
     <!-- End Script -->
-
 </body>
 
 </html>

@@ -32,7 +32,7 @@ $cod=$_GET['id'];
                     });
                 </script>";
 
-            $sql="delete from jugadores where id='$cod'";
+            $sql="delete from jugador where id='$cod'";
             $res=mysqli_query($link,$sql) 
             or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
         ?>

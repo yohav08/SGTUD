@@ -3,20 +3,20 @@
 
     $link=conectar();
 
+    $id=$_REQUEST['txt_Id'];
     $cod=$_REQUEST['txt_codCarrera'];
     $nombre=$_REQUEST['txt_nombre'];
     $tel=$_REQUEST['txt_telefono'];
     $correo=$_REQUEST['txt_correo'];
-    $carrera=$_REQUEST['txt_carrera'];
-    $genero=$_REQUEST['txt_genero'];
     $habilitado=$_REQUEST['txt_habilitado'];
 
-    $sql="insert into jugador (codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado) 
-    values ('$cod', '$nombre', '$tel', '$correo', '$carrera', '$genero', '$habilitado')";
+
+    $sql="update organizador set nombre='$nombre', codigo_carrera='$cod', 
+    telefono='$tel', correo='$correo', habilitado='$habilitado' where id=$id";
 
     $res=mysqli_query($link,$sql) 
     or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
-    
+
     
     ?>
     <!DOCTYPE html>
@@ -34,10 +34,10 @@
                 Swal.fire({
                 icon : 'success',
                 title : 'Operación exitosa',
-                text :  'Jugador creado con éxito'
+                text :  'Organizador Modificado con éxito'
                 }).then((result) => {
                     if(result.isConfirmed){
-                    window.location='./players.php';
+                    window.location='./organizador.php';
                     }
                 }); 
             </script>";

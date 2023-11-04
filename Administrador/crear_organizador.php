@@ -42,7 +42,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="../index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../about.php">Sobre Nosotros</a>
+                            <a class="nav-link" href="../Administrador/organizador.php">Organizadores</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../torneos.php">Torneos</a>
@@ -69,50 +69,28 @@ https://templatemo.com/tm-559-zay-shop
 
 
 
-    <!-- Formulario Modificar Producto-->
-    <?php 
-    include('./consultarSQL.php');
-    $cod=$_GET['id'];
-    $res=buscarjugadores($cod);
-    foreach($res as $row){
-    ?>
+    <!-- Formulario Crear Jugador-->
     <div class="container"> <br><br>
-        <h2 class="text-black">Modificar Jugador</h2>
-        <form action="./modificarJugador.php" method="GET" class="row g-3">
-            <div class="col-2">
-                <label for="txt_Id" class="form-label">Id:</label>
-                <input type="text" class="form-control" name="txt_Id" value="<?php echo $row['id']?>" readonly>
-            </div>
+        <h2 class="text-black">Crear Organizador</h2>
+        <form action="./crearOrganizador.php" method="GET" class="row g-3">
+            
             <div class="col-4">
                 <label for="txt_codCarrera" class="form-label">Código: </label>
-                <input type="text" class="form-control" name="txt_codCarrera" value="<?php echo $row['codigo_carrera']?>">
+                <input type="text" class="form-control" name="txt_codCarrera" placeholder="Escriba el codigo Estudiantil" required>
             </div>
-            <div class="col-6">
+            <div class="col-8">
                 <label for="txt_nombre" class="form-label">Nombre: </label>
-                <input type="text" class="form-control" name="txt_nombre"  value="<?php echo $row['nombre']?>">
+                <input type="text" class="form-control" name="txt_nombre"  placeholder="Escriba el nombre del Organizador" required>
             </div>
             <div class="col-4">
                 <label for="txt_telefono" class="form-label">Teléfono: </label>
-                <input type="text" class="form-control" name="txt_telefono" value="<?php echo $row['telefono']?>">
+                <input type="text" class="form-control" name="txt_telefono" placeholder="Escriba el número telefónico" required>
             </div>
             <div class="col-4">
                 <label for="txt_correo" class="form-label">Correo: </label>
-                <input type="text" class="form-control" name="txt_correo" value="<?php echo $row['correo']?>">
+                <input type="text" class="form-control" name="txt_correo" placeholder="Escriba el correo" required>
             </div>
             <div class="col-4">
-                <label for="txt_carrera" class="form-label">Carrera</label>
-                <input type="text" class="form-control" name="txt_carrera" value="<?php echo $row['carrera']?>">
-            </div>
-
-            <div class="col-6">
-                <label for="txt_genero" class="form-label">Género</label>
-                <select name="txt_genero" class="form-control" required>
-                    <option value="F">Femenino</option>
-                    <option value="M">Masculino</option>
-                </select>
-            </div>
-
-            <div class="col-6">
                 <label for="txt_habilitado" class="form-label">Habilitado</label>
                 <select name="txt_habilitado" class="form-control"required>
                     <option value="SI">SI</option>
@@ -120,9 +98,8 @@ https://templatemo.com/tm-559-zay-shop
                 </select>
             </div>
 
-            <?php }?>
             <center>
-            <input type="submit" value="Modificar Jugador" class="btn btn-primary">
+            <input type="submit" value="Agregar Organizador" class="btn btn-primary">
             </center>
         </form>
     </div>

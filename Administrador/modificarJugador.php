@@ -13,7 +13,7 @@
     $habilitado=$_REQUEST['txt_habilitado'];
 
 
-    $sql="update jugadores set nombre='$nombre', codigo_carrera='$cod', 
+    $sql="update jugador set nombre='$nombre', codigo_carrera='$cod', 
     telefono='$tel', correo='$correo', carrera='$carrera', genero='$genero', 
     habilitado='$habilitado' where id=$id";
 

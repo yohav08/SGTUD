@@ -6,15 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/apple-icon.png">
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/templatemo.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
 <!--
 TemplateMo 559 Zay Shop
 https://templatemo.com/tm-559-zay-shop
@@ -27,7 +27,7 @@ https://templatemo.com/tm-559-zay-shop
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.php">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="../index.php">
                 SGTUD
             </a>
 
@@ -39,23 +39,23 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">Inicio</a>
+                            <a class="nav-link" href="../index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">Sobre Nosotros</a>
+                            <a class="nav-link" href="../Administrador/organizador.php">Organizadores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="torneos.php">Torneos</a>
+                            <a class="nav-link" href="../torneos.php">Torneos</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="./Administrador/players.php">Jugadores</a>
+                            <a class="nav-link" href="./players.php">Jugadores</a>
                         </li>
                     </ul>
                 </div>
 
                  <!-- Acount -> Que solo se pueda iniciar sesión los administradores para la creación de jugadores -->
                 <div class="navbar align-self-center d-flex">
-                    <a class="nav-icon position-relative text-decoration-none" href="account.php">
+                    <a class="nav-icon position-relative text-decoration-none" href=".../account.html">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
@@ -67,29 +67,55 @@ https://templatemo.com/tm-559-zay-shop
     </nav>
     <!-- Close Header -->
 
-    <!-- Banner -->
-    <section class="bg-success py-5">
-        <div class="container">
-            <div class="row align-items-center py-5">
-                <div class="col-md-7 text-white">
-                    <h1>Sobre Nosotros Us</h1>
-                    <p>
-                        Somos un Sistema de gestión para torneos en la Universidad Distrital, con el objetivo de
-                        servir a la comunidad estudiantil. Esta plataforma tiene la misión de proporcionar a la comunidad
-                        un sistema que los mantega informados sobre los torneos que se desarrollan en la universidad.
-                        <br> <br>
-                        Estamos comprometidos con brindar una información eficiente y eficaz sobre el amplio
-                        espectro de torneos y eventos deportivos, culturales y académicos presentes en la universidad.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <img src="assets/img/trophy.png" alt="Sobre Nosotros y los Torneos">
 
-                </div>
+
+    <!-- Formulario Modificar Organizador-->
+    <?php 
+    include('./consultarSQL.php');
+    $cod=$_GET['id'];
+    $res=buscarorganizadores($cod);
+    foreach($res as $row){
+    ?>
+    <div class="container"> <br><br>
+        <h2 class="text-black">Modificar Organizador</h2>
+        <form action="./modificarOrganizador.php" method="GET" class="row g-3">
+            <div class="col-2">
+                <label for="txt_Id" class="form-label">Id:</label>
+                <input type="text" class="form-control" name="txt_Id" value="<?php echo $row['id']?>" readonly>
             </div>
-        </div>
-    </section>
-    <!-- Close Banner -->
+            <div class="col-4">
+                <label for="txt_codCarrera" class="form-label">Código: </label>
+                <input type="text" class="form-control" name="txt_codCarrera" value="<?php echo $row['codigo_carrera']?>">
+            </div>
+            <div class="col-6">
+                <label for="txt_nombre" class="form-label">Nombre: </label>
+                <input type="text" class="form-control" name="txt_nombre"  value="<?php echo $row['nombre']?>">
+            </div>
+            <div class="col-4">
+                <label for="txt_telefono" class="form-label">Teléfono: </label>
+                <input type="text" class="form-control" name="txt_telefono" value="<?php echo $row['telefono']?>">
+            </div>
+            <div class="col-4">
+                <label for="txt_correo" class="form-label">Correo: </label>
+                <input type="text" class="form-control" name="txt_correo" value="<?php echo $row['correo']?>">
+            </div>
+
+            <div class="col-4">
+                <label for="txt_habilitado" class="form-label">Habilitado</label>
+                <select name="txt_habilitado" class="form-control"required>
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>
+                </select>
+            </div>
+
+            <?php }?>
+            <center>
+            <input type="submit" value="Modificar Organizador" class="btn btn-primary">
+            </center>
+        </form>
+    </div>
+    <div style= "margin: 12% auto;"></div>
+    <!-- FIN Formulario Modificar Organizador-->
 
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
@@ -134,12 +160,13 @@ https://templatemo.com/tm-559-zay-shop
     <!-- End Footer -->
 
     <!-- Start Script -->
-        <script src="assets/js/jquery-1.11.0.min.js"></script>
-        <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/templatemo.js"></script>
-        <script src="assets/js/custom.js"></script>
+    <script src="../assets/js/jquery-1.11.0.min.js"></script>
+    <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/templatemo.js"></script>
+    <script src="../assets/js/custom.js"></script>
     <!-- End Script -->
+
 </body>
 
 </html>

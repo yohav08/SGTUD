@@ -1,0 +1,55 @@
+CREATE DATABASE proy_sgtud;
+USE proy_sgtud;
+
+CREATE TABLE organizador(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    codigo_carrera double not null, 
+    nombre varchar(50) not null,
+    telefono double not null, 
+    correo varchar(50) not null,
+    habilitado varchar(6)
+);
+
+CREATE TABLE torneo(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    nombre varchar(50) not null,
+    tipo varchar(50) not null,
+    fecha date
+);
+
+CREATE TABLE torneo_organizador(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    id_organizador int not null,
+    foreign key (id_organizador) references organizador (id),
+    id_torneo int,
+    foreign key (id_torneo) references torneo (id)
+);
+
+CREATE TABLE partido(
+	id float PRIMARY KEY AUTO_INCREMENT,
+    hora_inicio time not null,
+    hora_fin time not null,
+    contrincante_1 varchar(50) not null,
+    contrincante_2 varchar(50) not null,
+    id_torneo int,
+    foreign key (id_torneo) references torneo (id)
+);
+
+CREATE TABLE jugador(
+	id float PRIMARY KEY AUTO_INCREMENT,
+    codigo_carrera double not null, 
+    nombre varchar(50) not null,
+    telefono double not null, 
+    correo varchar(50) not null,
+    carrera varchar(50),
+    genero varchar(50), 
+    habilitado varchar(6),
+    id_partido int,
+    foreign key (id_partido) references torneo (id)
+);
+
+INSERT INTO jugador(codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado) 
+VALUES ('20202578001','Danilo aguilar','3104839100','daguilarm@udistrital.edu.co','Sistemas','M', 'SI');
+
+INSERT INTO jugador(codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado) 
+VALUES ('20202578081','Yohana Avila','3104839109','ayavilam@udistrital.edu.co','Sistemas','M', 'SI');

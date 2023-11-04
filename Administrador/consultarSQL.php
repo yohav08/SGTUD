@@ -16,6 +16,7 @@
    
 <?php
 
+   // JUGADORES
    function buscarjugadores($id_jugador){
       include_once('../conexion.php');
       $link=conectar();
@@ -23,27 +24,25 @@
       $cod=$id_jugador;
 
       $sql="select id, codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado
-      from jugadores  where id = '$cod'";
+      from jugador  where id = '$cod'";
 
       $res=mysqli_query($link,$sql) 
       or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
 
       return $res;
    }
-
 
    function consultarJugadoresAdm(){
       include_once('../conexion.php');
       $link=conectar();
 
-      $sql="select id, codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado from jugadores";
+      $sql="select id, codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado from jugador";
 
       $res=mysqli_query($link,$sql) 
       or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
 
       return $res;
    }
-
 
    function buscarjugadoresAdm($id_jugador){
       include_once('../conexion.php');
@@ -52,13 +51,63 @@
       $cod=$id_jugador;
 
       $sql="select codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado
-      from jugadores  where id = '$cod'";
+      from jugador  where id = '$cod'";
 
       $res=mysqli_query($link,$sql) 
       or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
 
       return $res;
    }
+
+   // ORGANIZADORES
+   function buscarorganizadores($id_organizador){
+      include_once('../conexion.php');
+      $link=conectar();
+
+      $cod=$id_organizador;
+
+      $sql="select id, codigo_carrera, nombre, telefono, correo, habilitado
+      from organizador  where id = '$cod'";
+
+      $res=mysqli_query($link,$sql) 
+      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+      return $res;
+   }
+
+   function consultarOrganizadoresAdm(){
+      include_once('../conexion.php');
+      $link=conectar();
+
+      $sql="select id, codigo_carrera, nombre, telefono, correo, habilitado from organizador";
+
+      $res=mysqli_query($link,$sql) 
+      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+      return $res;
+   }
+
+   function buscarorganizadoresAdm($id_organizador){
+      include_once('../conexion.php');
+      $link=conectar();
+
+      $cod=$id_organizador;
+
+      $sql="select codigo_carrera, nombre, telefono, correo, habilitado
+      from organizador  where id = '$cod'";
+
+      $res=mysqli_query($link,$sql) 
+      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+      return $res;
+   }
+
+
+
+
+
+
+
 
 
 
