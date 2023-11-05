@@ -145,10 +145,9 @@ https://templatemo.com/tm-559-zay-shop
                 <input type="hidden" name="product-title" value="Activewear">
                 <div class="row pb-3">
                     <div class="col d-grid">
-                        <a role="button" href="./crear_jugador.php" class="btn btn-success btn-lg">Agregar Jugador </a>
+                        <a role="button" href="./crear_torneo.php" class="btn btn-success btn-lg">Agregar Jugador </a>
                     </div>
                 </div>
-            </div>
 
             </form>
         </div>

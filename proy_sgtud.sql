@@ -51,10 +51,9 @@ CREATE TABLE partido(
 	id float PRIMARY KEY AUTO_INCREMENT,
     hora_inicio time not null,
     hora_fin time not null,
-
-    contrincante_1 varchar(50) not null,
+    contrincante_1 float not null,
     foreign key (contrincante_1) references jugador(id),
-    contrincante_2 varchar(50) not null,
+    contrincante_2 float not null,
     foreign key (contrincante_2) references jugador(id),
     id_torneo int,
     foreign key (id_torneo) references torneo (id)
@@ -69,10 +68,16 @@ CREATE TABLE partido(
 
 -- TORNEO
     INSERT INTO torneo(nombre, descripcion, precio, tipo, fecha) 
-    VALUES ('Torneo de Volley a la Media','Es un torneo de ajedrez al que todos están invitados','5000','Voleibol','2023-11-01');
+    VALUES ('Torneo de Volei a la Media','Es un torneo de Voleibol al que todos están invitados','5000','Voleibol','2023-11-01');
 
     INSERT INTO torneo(nombre, descripcion, precio, tipo, fecha) 
-    VALUES ('Torneo de Ajedrez a la Tecno','Es un torneo de ajedrez al que todos están invitados','10000','Voleibol','2023-11-03');
+    VALUES ('Torneo de Ajedrez a la Tecno','Es un torneo de ajedrez al que todos están invitados','10000','Ajedrez','2023-11-03');
+
+    INSERT INTO torneo(nombre, descripcion, precio, tipo, fecha) 
+    VALUES ('Torneo de XBOX360 a la Tecno','Es un torneo de Video juegos al que todos están invitados','4000','XBOX360','2023-11-05');
+
+    INSERT INTO torneo(nombre, descripcion, precio, tipo, fecha) 
+    VALUES ('Torneo de Baloncesto en el Lectus','Es un torneo de Baloncesto al que todos están invitados','4000','Baloncesto','2023-11-05');
 
 -- ESPECIFICACIONES
     INSERT INTO especificacion(especificacion, id_torneo) 

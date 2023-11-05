@@ -129,6 +129,20 @@
       return $res;
    }
 
+   function buscartorneo($id_torneo){
+      include_once('../conexion.php');
+      $link=conectar();
+
+      $cod=$id_torneo;
+
+      $sql="select id, nombre, descripcion, precio, tipo, fecha
+      from torneo  where id = '$cod'";
+
+      $res=mysqli_query($link,$sql) 
+      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+      return $res;
+   }
 
    // ORGANIZADOR POR TORNEO
    function consultarOrganizador_T($id_torneo){
