@@ -115,9 +115,8 @@
                         <td>
                             <div class="col-12">
                                 <label for="txt_especificacion" class="form-label">Especificaciones: </label>
-                                <input type="text" class="form-control" name="txt_especificacion" placeholder="Escriba la carrera del Estudiantel" required>
-                                <br><input type="text" class="form-control" name="txt_especificacion" placeholder="Escriba la carrera del Estudiantel" required>
-                            
+                                <input type="text" class="form-control" name="txt_especificacion" placeholder="Escriba una especificación" required>
+                                
                             </div>
                         </td>
                     </tr>
