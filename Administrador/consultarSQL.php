@@ -102,10 +102,64 @@
       return $res;
    }
 
+   // TORNEOS
+   function consultarTorneosAdm(){
+      include_once('./conexion.php');
+      $link=conectar();
+
+      $sql="select id, nombre, descripcion, precio, tipo, fecha from torneo";
+
+      $res=mysqli_query($link,$sql) 
+      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+      return $res;
+   }
+
+   function consultarTorneo($id_torneo){
+      include_once('./conexion.php');
+      $link=conectar();
+
+      $cod=$id_torneo;
+
+      $sql="select id, nombre from torneo where id = '$cod'";
+
+      $res=mysqli_query($link,$sql) 
+      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+      return $res;
+   }
 
 
+   // ORGANIZADOR POR TORNEO
+   function consultarOrganizador_T($id_torneo){
+      include_once('./conexion.php');
+      $link=conectar();
 
+      $cod=$id_torneo;
 
+      $sql="select o.nombre from organizador as o 
+                     inner join torneo_organizador as t_o on o.id = t_o.id_organizador
+                     inner join torneo as tor on t_o.id_torneo = tor.id
+            where tor.id = '$cod'";
+
+      $res=mysqli_query($link,$sql) 
+      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+      return $res;
+   }
+
+   // ESPECIFICACIONES
+   function consultarEspecificacionesAdm(){
+      include_once('./conexion.php');
+      $link=conectar();
+
+      $sql="select * from especificacion";
+
+      $res=mysqli_query($link,$sql) 
+      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+      return $res;
+   }
 
 
 

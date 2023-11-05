@@ -67,78 +67,65 @@
     </nav>
     <!-- Close Header -->
 
-    <!-- Open Content -->
-    <section class="bg-light">
-        <div class="container pb-5">
-            <div class="row">
-                <?php
+
+
+    <!-- Formulario Crear Jugador-->
+    <div class="container"> <br><br>
+        <h2 class="text-black">Crear Inscripción</h2>
+        <form action="./crearInscripcion.php" method="GET" class="row g-3">
+            
+            <div class="col-4">
+                <label for="txt_codCarrera" class="form-label">Código: </label>
+                <input type="text" class="form-control" name="txt_codCarrera" placeholder="Escriba el codigo Estudiantil" required>
+            </div>
+            <div class="col-8">
+                <label for="txt_nombre" class="form-label">Nombre: </label>
+                <input type="text" class="form-control" name="txt_nombre"  placeholder="Escriba el nombre del Estudiante" required>
+            </div>
+            <div class="col-4">
+                <label for="txt_telefono" class="form-label">Teléfono: </label>
+                <input type="text" class="form-control" name="txt_telefono" placeholder="Escriba el teléfono del Estudiante" required>
+            </div>
+            <div class="col-4">
+                <label for="txt_correo" class="form-label">Correo: </label>
+                <input type="text" class="form-control" name="txt_correo" placeholder="Escriba el correo del Estudiante" required>
+            </div>
+            <div class="col-4">
+                <label for="txt_carrera" class="form-label">Carrera</label>
+                <input type="text" class="form-control" name="txt_carrera" placeholder="Escriba la carrera del Estudiantel" required>
+            </div>
+            <div class="col-4">
+                <label for="txt_genero" class="form-label">Género</label>
+                <select name="txt_genero" class="form-control" required>
+                    <option value="F">Femenino</option>
+                    <option value="M">Masculino</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <label for="txt_habilitado" class="form-label">Habilitado</label>
+                <input type="text" class="form-control" name="txt_habilitado" value="SI "readonly>
+            </div>
+            <div class="col-4">
+                <label for="txt_torneo" class="form-label">Código del torneo al cual se inscribe</label>
+                <?php 
+                    
                     include('./Administrador/consultarSQL.php');
                     $cod=$_GET['id'];
-                    $res=consultarTorneosAdm();
+                    $res=consultarTorneo($cod);
 
-                    $i=0;
-                    foreach($res as $row){ 
-                        if ($cod == $row['id']) {     
-                            $i++;                         
-                    ?>
-                <div class="col-lg-5 mt-5">
-                    <div class="card mb-3">
-                        <?php echo '<img class="card-img img-fluid" src="./assets/img/'.$row['tipo'].'.jpg" alt="Card image cap" id="torneo-detail">';?>
-                    </div>
-                </div>
-                <!-- col end -->
-                <div class="col-lg-7 mt-5">
-                    <div class="card">
-                        <div class="card-body" >
-                            <h1 class="h2">Torneo de <?php echo $row['tipo']; ?> </h1>
-                            <?php
-                                $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-                                $fecha_1 = explode("-", $row['fecha']);
-                                $fecha = $fecha_1[2].' de '. $meses[intval($fecha_1[1])-1] .', '.$fecha_1[0];                                
-                            ?>
-                            <p style="font-weight:bold;" class="h3 py-2" >Fecha: <span  id="fecha"><?php echo $fecha;?></span></p>
+                    foreach($res as $row){?>
 
-                            <h6>Descripción:</h6>
-                            <p><?php echo $row['descripcion'];?></p>
-
-                            <h6>Organizadores: </h6>
-                            <?php 
-                                $y=0;
-                                $res0=consultarOrganizador_T($cod);
-                                foreach($res0 as $row){?>
-                                        <li><?php echo $row['nombre']?></li>
-                            <?php }?>
-
-                            
-                    <?php }}?>
-                            <br><h6>Especificaciones:</h6>
-                            <ul class="pb-3">
-                            <?php 
-                                $y=0;
-                                $res1=consultarEspecificacionesAdm();
-                                foreach($res1 as $row){ 
-                                    if ($cod == $row['id_torneo']) {     
-                                        $y++;?>
-                                        <li><?php echo $row['especificacion']?></li>
-                            <?php }}?>
-                            </ul>
-
-                            <form action="" method="GET">
-                                <input type="hidden" name="product-title" value="Activewear"> 
-                                <div class="row pb-3">
-                                    <div class="col d-grid">
-                                        <a role="button" class="btn btn-success btn-lg" href="crear_inscripcion.php?id=<?php echo $cod?>">Inscribirse</a>
-                                    </div>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
+                <input type="text" class="form-control" name="txt_torneo" value="<?php echo $row['id']?>"readonly>
+                <?php }?>
             </div>
-        </div>
-    </section>
-    <!-- Close Content -->
+
+            <center>
+            <input type="submit" value="Agregar Inscripción" class="btn btn-primary">
+            </center>
+        </form>
+    </div>
+    <div style= "margin: 12% auto;"></div>
+    <!-- FIN Formulario Crear Producto-->
 
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
@@ -183,13 +170,12 @@
     <!-- End Footer -->
 
     <!-- Start Script -->
-    <script src="./assets/js/jquery-1.11.0.min.js"></script>
-    <script src="./assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/templatemo.js"></script>
-    <script src="./assets/js/custom.js"></script>
+    <script src="../assets/js/jquery-1.11.0.min.js"></script>
+    <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/templatemo.js"></script>
+    <script src="../assets/js/custom.js"></script>
     <!-- End Script -->
-
 
 </body>
 
