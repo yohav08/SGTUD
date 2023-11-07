@@ -19,6 +19,16 @@
     TemplateMo 559 Zay Shop
     https://templatemo.com/tm-559-zay-shop
     -->
+    <script>
+        function myFunction() {
+            document.getElementById("input_esp").innerHTML = '';  
+            let tama=0;
+            tama = document.getElementById('tam').value;
+            for (let i = 0; i < tama; i++) {
+                document.getElementById("input_esp").innerHTML += '<br><input type="text" class="form-control" name="txt_especificacion[]" placeholder="Escriba la especificación '+ (i+1) +'" required>';  
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -72,11 +82,27 @@
     <!-- Formulario Crear Jugador-->
     <div class="container"> <br><br>
         <h2 class="text-black">Crear Torneo</h2>
+        
+        
+            
+
         <form action="./crearTorneo.php" method="GET" class="row g-3">
+            <?php 
+                include('./consultarSQL.php');
+                $cod=$_GET['id'];
+                // $res0=buscartorneo($cod+2);
+                // foreach($res0 as $row0){
+                //    $aux $row0['id'];
+            ?>
+
+            <input class="col-2" type="text" name="txt_torneo" value="<?php echo $cod+1?>" hidden>
+
+            <?php 
+        // } ?>
 
             <div class="col-2">
                 <label for="txt_nombre" class="form-label">Nombre: </label>
-                <input type="text" class="form-control" name="txt_nombre"  placeholder="Escriba el nombre del Torneo" required>
+                <input type="text" class="form-control" name="txt_nombre" placeholder="Escriba el nombre del Torneo" required>
             </div>
             <div class="col-10">
                 <label for="txt_descripcion" class="form-label">Descripción: </label>
@@ -103,20 +129,34 @@
                     <option value="XBOX360">XBOX360</option>
                 </select>
             </div> 
-            <table class="table table-dark">
+            <table class="table">
                 <tbody>
                     <tr>
                         <td>
-                            <div class="col-">
+                            <div class="">
                                 <label for="txt_organizador" class="form-label">Organizadores: </label>
-                                <input type="text" class="form-control" name="txt_organizador" placeholder="Escriba el teléfono del Estudiante" required>
+                                <select name="txt_organizador" class="form-control"required>
+                                <?php
+
+                                    $res=consultarOrganizadoresAdm();
+                                    foreach($res as $row){
+                                        if ($row['habilitado']=='SI') {?>
+                                        
+                                        <option value="<?php echo $row['id']?>"><?php echo $row['nombre']?></option>
+                                    <?php }}?>
+                                </select>
                             </div>  
                         </td>
                         <td>
-                            <div class="col-12">
-                                <label for="txt_especificacion" class="form-label">Especificaciones: </label>
-                                <input type="text" class="form-control" name="txt_especificacion" placeholder="Escriba una especificación" required>
-                                
+                            <div class="">
+                                <label class="form-label ">Especificaciones (Tenga en cuenta que después no las podrá modificar): </label>
+                                <input type="text"class="form-control" class="col-10" id="tam" placeholder="Escriba número de especificaciones">
+                                <center >
+
+                                <div style= "margin: 1% auto;"></div>
+                                    <input  type="button" value="Agregar especificaciones" id="cal"  onclick="myFunction()" class="btn btn-success">
+                                </center>
+                                <div id="input_esp"></div>
                             </div>
                         </td>
                     </tr>
@@ -124,11 +164,11 @@
             </table>
 
             <center>
-            <input type="submit" value="Agregar Jugador" class="btn btn-primary">
+                <input type="submit" value="Crear Torneo" name="enviar" class="btn btn-primary">
             </center>
         </form>
     </div>
-    <div style= "margin: 12% auto;"></div>
+    <div style= "margin: 2% auto;"></div>
     <!-- FIN Formulario Crear Producto-->
 
     <!-- Start Footer -->

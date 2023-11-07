@@ -1,15 +1,6 @@
 CREATE DATABASE proy_sgtud;
 USE proy_sgtud;
 
-CREATE TABLE organizador(
-	id int PRIMARY KEY AUTO_INCREMENT,
-    codigo_carrera double not null, 
-    nombre varchar(50) not null,
-    telefono double not null, 
-    correo varchar(50) not null,
-    habilitado varchar(6)
-);
-
 CREATE TABLE torneo(
 	id int PRIMARY KEY AUTO_INCREMENT,
     nombre varchar(50) not null,
@@ -19,17 +10,20 @@ CREATE TABLE torneo(
     fecha date
 );
 
-CREATE TABLE especificacion(
+CREATE TABLE organizador(
 	id int PRIMARY KEY AUTO_INCREMENT,
-    especificacion varchar(250),
+    codigo_carrera double not null, 
+    nombre varchar(50) not null,
+    telefono double not null, 
+    correo varchar(50) not null,
+    habilitado varchar(6),
     id_torneo int,
     foreign key (id_torneo) references torneo (id)
 );
 
-CREATE TABLE torneo_organizador(
+CREATE TABLE especificacion(
 	id int PRIMARY KEY AUTO_INCREMENT,
-    id_organizador int not null,
-    foreign key (id_organizador) references organizador (id),
+    especificacion varchar(250),
     id_torneo int,
     foreign key (id_torneo) references torneo (id)
 );
@@ -59,13 +53,6 @@ CREATE TABLE partido(
     foreign key (id_torneo) references torneo (id)
 );
 
--- ORGANIZADOR
-    INSERT INTO organizador(codigo_carrera, nombre, telefono, correo, habilitado) 
-    VALUES ('20202578111','Dania aguilar','3104855100','daguilarm@udistrital.edu.co', 'SI');
-
-    INSERT INTO organizador(codigo_carrera, nombre, telefono, correo, habilitado) 
-    VALUES ('20202578123','Diana Avila','3104839999','adavilam@udistrital.edu.co', 'SI');
-
 -- TORNEO
     INSERT INTO torneo(nombre, descripcion, precio, tipo, fecha) 
     VALUES ('Torneo de Volei a la Media','Es un torneo de Voleibol al que todos están invitados','5000','Voleibol','2023-11-01');
@@ -79,12 +66,25 @@ CREATE TABLE partido(
     INSERT INTO torneo(nombre, descripcion, precio, tipo, fecha) 
     VALUES ('Torneo de Baloncesto en el Lectus','Es un torneo de Baloncesto al que todos están invitados','4000','Baloncesto','2023-11-05');
 
+-- ORGANIZADOR
+    INSERT INTO organizador(codigo_carrera, nombre, telefono, correo, habilitado, id_torneo) 
+    VALUES ('20202578111','Daniel Aguilar','3104855100','daguilarm@udistrital.edu.co', 'SI', '1');
+
+    INSERT INTO organizador(codigo_carrera, nombre, telefono, correo, habilitado, id_torneo) 
+    VALUES ('20202578123','Diana Avila','3104839999','adavilam@udistrital.edu.co', 'SI', '2');
+
 -- ESPECIFICACIONES
     INSERT INTO especificacion(especificacion, id_torneo) 
     VALUES ('Tener más de 15 años','1');
 
     INSERT INTO especificacion(especificacion, id_torneo) 
     VALUES ('Ser Estudiante activo','1');
+
+    INSERT INTO especificacion(especificacion, id_torneo) 
+    VALUES ('Presentar carnet universitario','2');
+
+    INSERT INTO especificacion(especificacion, id_torneo) 
+    VALUES ('Ser Estudiante activo','2');
 
 -- JUGADOR
     INSERT INTO jugador(codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado, id_torneo) 
@@ -95,8 +95,3 @@ CREATE TABLE partido(
 
     INSERT INTO jugador(codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado, id_torneo) 
     VALUES ('20202555081','Dayana Avila','3104830109','adavilam@udistrital.edu.co','Mecánica','F', 'SI','1');
-
--- TORNEO_ORGANIZADOR
-    INSERT INTO torneo_organizador(id_organizador, id_torneo) VALUES ('2','2');
-    INSERT INTO torneo_organizador(id_organizador, id_torneo) VALUES ('2','1');
-    INSERT INTO torneo_organizador(id_organizador, id_torneo) VALUES ('1','1');

@@ -116,7 +116,7 @@
                 <input type="hidden" name="product-title" value="Activewear">
                 <div class="row pb-3">
                     <div class="col d-grid">
-                        <a role="button" href="./Administrador/crear_torneo.php" class="btn btn-success btn-lg">Crear Torneo </a>
+                        <a role="button" href="./Administrador/crear_torneo.php?id=<?php echo $row['id']?>" class="btn btn-success btn-lg">Crear Torneo </a>
                     </div>
                 </div>
 

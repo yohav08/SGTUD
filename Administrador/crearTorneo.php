@@ -2,21 +2,30 @@
     include('../conexion.php');
 
     $link=conectar();
-
-    $cod=$_REQUEST['txt_codCarrera'];
+   
+    $id_torneo=$_REQUEST['txt_torneo'];
     $nombre=$_REQUEST['txt_nombre'];
-    $tel=$_REQUEST['txt_telefono'];
-    $correo=$_REQUEST['txt_correo'];
-    $carrera=$_REQUEST['txt_carrera'];
-    $genero=$_REQUEST['txt_genero'];
-    $habilitado=$_REQUEST['txt_habilitado'];
+    $descripcion=$_REQUEST['txt_descripcion'];
+    $precio=$_REQUEST['txt_precio'];
+    $tipo=$_REQUEST['txt_tipo'];
+    $fecha=$_REQUEST['txt_fecha'];
+    $especificacion=$_REQUEST['txt_especificacion'];
+    $tam=count($especificacion);
 
-    $sql="insert into jugador (codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado) 
-    values ('$cod', '$nombre', '$tel', '$correo', '$carrera', '$genero', '$habilitado')";
 
+    $sql="insert into torneo (nombre, descripcion, precio, tipo, fecha) 
+    values ('$nombre', '$descripcion', '$precio', '$tipo', '$fecha')";
     $res=mysqli_query($link,$sql) 
     or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
-    
+
+
+    for ($i=0; $i <$tam; $i++) { 
+        $sql0="insert into especificacion (especificacion, id_torneo) 
+        values ('$especificacion[$i]', '$id_torneo')";
+        $res0=mysqli_query($link,$sql0) 
+        or die("ERROR EN LA CONSULTA $sql0".mysqli_error($link));
+
+    }
     
     ?>
     <!DOCTYPE html>
@@ -34,10 +43,10 @@
                 Swal.fire({
                 icon : 'success',
                 title : 'Operación exitosa',
-                text :  'Jugador creado con éxito'
+                text :  'Torneo creado con éxito'
                 }).then((result) => {
                     if(result.isConfirmed){
-                    window.location='./players.php';
+                    window.location='../torneos.php';
                     }
                 }); 
             </script>";

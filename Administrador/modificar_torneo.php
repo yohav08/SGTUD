@@ -73,8 +73,8 @@
     <?php 
     include('./consultarSQL.php');
     $cod=$_GET['id'];
-    $res=buscartorneo($cod);
-    foreach($res as $row){
+    $res0=buscartorneo($cod);
+    foreach($res0 as $row){
     ?>
     <div class="container"> <br><br>
         <h2 class="text-black">Modificar Torneo</h2>
@@ -95,7 +95,7 @@
                 <label for="txt_descripcion" class="form-label">Descripción: </label>
                 <input type="text" class="form-control" name="txt_descripcion" value="<?php echo $row['descripcion']?>"required>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <label for="txt_tipo" class="form-label">Tipo: </label>
                 <select name="txt_tipo" class="form-control"required>
                     <option value="Voleibol">Voleibol</option>
@@ -108,9 +108,21 @@
                     <option value="XBOX360">XBOX360</option>
                 </select>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <label for="txt_fecha" class="form-label">Fecha: </label>
                 <input type="date" class="form-control" name="txt_fecha" value="<?php echo $row['fecha']?>">
+            </div>
+            <div class="col-4">
+                <label for="txt_organizador" class="form-label">Organizadores: </label>
+                <select name="txt_organizador" class="form-control"required>
+                <?php
+                    $res=consultarOrganizadoresAdm();
+                    foreach($res as $row1){
+                        if ($row1['habilitado']=='SI') {?>
+                        
+                        <option value="<?php echo $row1['id']?>"><?php echo $row1['nombre']?></option>
+                    <?php }}?>
+                </select>
             </div>
 
             <?php }?>

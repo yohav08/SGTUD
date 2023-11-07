@@ -79,7 +79,7 @@
       include_once('../conexion.php');
       $link=conectar();
 
-      $sql="select id, codigo_carrera, nombre, telefono, correo, habilitado from organizador";
+      $sql="select id, codigo_carrera, nombre, telefono, correo, habilitado, id_torneo from organizador";
 
       $res=mysqli_query($link,$sql) 
       or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
@@ -103,6 +103,18 @@
    }
 
    // TORNEOS
+   function consultarTorneosAdm1(){
+      include_once('../conexion.php');
+      $link=conectar();
+
+      $sql="select id, nombre, descripcion, precio, tipo, fecha from torneo";
+
+      $res=mysqli_query($link,$sql) 
+      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+      return $res;
+   }
+
    function consultarTorneosAdm(){
       include_once('./conexion.php');
       $link=conectar();
@@ -256,6 +268,7 @@
 
       return $res;
    }
+   
    function consultarAdmins(){
       include_once('../conexion.php');
       $link=conectar();
@@ -284,7 +297,7 @@
 
 ?>
 
-<script src="./bootstrap/js/bootstrap.min.js"></script>
+      <script src="./bootstrap/js/bootstrap.min.js"></script>
       <script src="./sw/dist/sweetalert2.min.js"></script>
       <script src="./js/jquery-3.6.1.min.js"></script>
 

@@ -148,7 +148,6 @@ https://templatemo.com/tm-559-zay-shop
                         <a role="button" href="./crear_jugador.php" class="btn btn-success btn-lg">Agregar Jugador </a>
                     </div>
                 </div>
-            </div>
 
             </form>
         </div>
