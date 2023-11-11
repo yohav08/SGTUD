@@ -29,7 +29,7 @@ CREATE TABLE especificacion(
 );
 
 CREATE TABLE jugador(
-	id float PRIMARY KEY AUTO_INCREMENT,
+	id int PRIMARY KEY AUTO_INCREMENT,
     codigo_carrera double not null, 
     nombre varchar(50) not null,
     telefono double not null, 
@@ -42,12 +42,12 @@ CREATE TABLE jugador(
 );
 
 CREATE TABLE partido(
-	id float PRIMARY KEY AUTO_INCREMENT,
+	id int PRIMARY KEY AUTO_INCREMENT,
     hora_inicio time not null,
     hora_fin time not null,
-    contrincante_1 float not null,
+    contrincante_1 int not null,
     foreign key (contrincante_1) references jugador(id),
-    contrincante_2 float not null,
+    contrincante_2 int not null,
     foreign key (contrincante_2) references jugador(id),
     id_torneo int,
     foreign key (id_torneo) references torneo (id)
@@ -88,10 +88,31 @@ CREATE TABLE partido(
 
 -- JUGADOR
     INSERT INTO jugador(codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado, id_torneo) 
-    VALUES ('20202578001','Danilo aguilar','3104839100','daguilarm@udistrital.edu.co','Sistemas','M', 'SI','2');
+    VALUES ('20202578001','Danilo aguilar','3104839100','daguilarm@udistrital.edu.co','Sistemas','M', 'SI','1');
 
     INSERT INTO jugador(codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado, id_torneo) 
-    VALUES ('20202578081','Yohana Avila','3104839109','ayavilam@udistrital.edu.co','Sistemas','F', 'SI','2');
+    VALUES ('20202578081','Yohana Avila','3104839109','ayavilam@udistrital.edu.co','Sistemas','F', 'SI','1');
 
     INSERT INTO jugador(codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado, id_torneo) 
-    VALUES ('20202555081','Dayana Avila','3104830109','adavilam@udistrital.edu.co','Mecánica','F', 'SI','1');
+    VALUES ('20202555084','Dayana Avila','3104830119','adavilam@udistrital.edu.co','Control','F', 'SI','2');
+
+    INSERT INTO jugador(codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado, id_torneo) 
+    VALUES ('20202555085','David Campos','3104830129','sdcampos@udistrital.edu.co','Civiles','M', 'SI','2');
+
+    INSERT INTO jugador(codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado, id_torneo) 
+    VALUES ('20202555085','Israel Buitrago','3104830159','isbuitrago@udistrital.edu.co','Industrial','M', 'SI','3');
+
+    INSERT INTO jugador(codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado, id_torneo) 
+    VALUES ('20202555015','Adriana Rodriguez','3104830359','avrodriguez@udistrital.edu.co','Sistemas','F', 'SI','3');
+
+-- PARTIDO
+    INSERT INTO partido(hora_inicio, hora_fin, contrincante_1, contrincante_2, id_torneo) 
+    VALUES ('09:30:00','10:00:00','1','2','1');
+
+    INSERT INTO partido(hora_inicio, hora_fin, contrincante_1, contrincante_2, id_torneo) 
+    VALUES ('09:30:00','10:00:00','3','4','2');
+
+    INSERT INTO partido(hora_inicio, hora_fin, contrincante_1, contrincante_2, id_torneo) 
+    VALUES ('09:30:00','10:00:00','5','6','3');
+
+    

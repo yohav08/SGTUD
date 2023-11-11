@@ -2,57 +2,48 @@
     include('../conexion.php');
 
     $link=conectar();
-   
+
+    // $id_partido=$_REQUEST['txt_partido'];
     $id_torneo=$_REQUEST['txt_torneo'];
-    $nombre=$_REQUEST['txt_nombre'];
-    $descripcion=$_REQUEST['txt_descripcion'];
-    $precio=$_REQUEST['txt_precio'];
-    $tipo=$_REQUEST['txt_tipo'];
-    $fecha=$_REQUEST['txt_fecha'];
-    $especificacion=$_REQUEST['txt_especificacion'];
-    $tam=count($especificacion);
+    $hora_inicio=$_REQUEST['txt_hora_inicio'];
+    $hora_fin=$_REQUEST['txt_hora_fin'];
+    $contrincante_1=$_REQUEST['txt_contrincante_1'];
+    $contrincante_2=$_REQUEST['txt_contrincante_2'];
 
 
-    $sql="insert into torneo (nombre, descripcion, precio, tipo, fecha) 
-    values ('$nombre', '$descripcion', '$precio', '$tipo', '$fecha')";
-    $res=mysqli_query($link,$sql) 
+    $sql="insert into partido (hora_inicio, hora_fin, contrincante_1, contrincante_2, id_torneo)
+    values ('$hora_inicio', '$hora_fin', '$contrincante_1', '$contrincante_2', '$id_torneo')";
+
+    $res=mysqli_query($link,$sql)
     or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
 
-
-    for ($i=0; $i <$tam; $i++) { 
-        $sql0="insert into especificacion (especificacion, id_torneo) 
-        values ('$especificacion[$i]', '$id_torneo')";
-        $res0=mysqli_query($link,$sql0) 
-        or die("ERROR EN LA CONSULTA $sql0".mysqli_error($link));
-
-    }
-    
     ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.min.css " rel="stylesheet">
-            
+
     </head>
     <body>
         <?php
-
             echo "
             <script type='text/javascript'>
                 Swal.fire({
                 icon : 'success',
                 title : 'Operación exitosa',
-                text :  'Torneo creado con éxito'
+                text :  'Partido agregado con éxito'
                 }).then((result) => {
                     if(result.isConfirmed){
-                        window.location='../torneos.php';
+
+                        window.location='.s./torneos.php ;
                     }
-                }); 
+                });
             </script>";
+            // window.location='../torneo-single.php?id=".echo($id_torneo).";
         ?>
-    
-        
+
+
         <!-- Bootstrap core JS-->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

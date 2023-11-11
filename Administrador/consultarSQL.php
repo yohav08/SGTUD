@@ -36,7 +36,7 @@
       include_once('../conexion.php');
       $link=conectar();
 
-      $sql="select id, codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado from jugador";
+      $sql="select id, codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado, id_torneo from jugador";
 
       $res=mysqli_query($link,$sql) 
       or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
@@ -163,9 +163,8 @@
 
       $cod=$id_torneo;
 
-      $sql="select o.nombre from organizador as o 
-                     inner join torneo_organizador as t_o on o.id = t_o.id_organizador
-                     inner join torneo as tor on t_o.id_torneo = tor.id
+      $sql="select org.nombre from organizador as org 
+                     inner join torneo as tor on org.id_torneo = tor.id
             where tor.id = '$cod'";
 
       $res=mysqli_query($link,$sql) 
@@ -188,15 +187,15 @@
    }
 
 
-
-
-
-   function consultarProductos(){
+   // PARTIDOS
+   function consultarPartidos(){
       include_once('./conexion.php');
       $link=conectar();
 
-      $sql="select p.cod_producto, p.nombre, p.unidades, p.precio, p.descripcion, t.tipo from 
-      producto as p inner join tipo as t on p.cod_tipo = t.cod_tipo";
+      $sql="select par.id, par.hora_inicio, par.hora_fin, par.contrincante_1, jugador1.nombre as nombre_1, par.contrincante_2, jugador2.nombre as nombre_2, par.id_torneo
+               FROM partido as par
+               JOIN jugador AS jugador1 ON par.contrincante_1 = jugador1.id
+               JOIN jugador AS jugador2 ON par.contrincante_2 = jugador2.id ";
 
       $res=mysqli_query($link,$sql) 
       or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
@@ -204,90 +203,14 @@
       return $res;
    }
 
-   function consultarProductosAdm(){
+   function consultarPartidosAdm(){
       include_once('../conexion.php');
       $link=conectar();
 
-      $sql="select p.cod_producto, p.nombre, p.unidades, p.precio, p.descripcion, t.tipo from 
-      producto as p inner join tipo as t on p.cod_tipo = t.cod_tipo";
-
-      $res=mysqli_query($link,$sql) 
-      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
-
-      return $res;
-   }
-
-   function buscarProductos($cod_producto){
-      include_once('../conexion.php');
-      $link=conectar();
-
-      $cod=$cod_producto;
-
-      $sql="select p.cod_producto, p.nombre, p.unidades, p.precio, p.descripcion, t.tipo from 
-      producto as p inner join tipo as t on p.cod_tipo = t.cod_tipo where p.cod_producto = '$cod'";
-
-      $res=mysqli_query($link,$sql) 
-      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
-
-      return $res;
-   }
-
-   function buscartipos(){
-      include_once('../conexion.php');
-      $link=conectar();
-
-      $sql="select * from tipo";
-
-      $res=mysqli_query($link,$sql) 
-      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
-
-      return $res;
-   }
-
-   function consultarCompras(){
-      include_once('../conexion.php');
-      $link=conectar();
-
-      $sql="select cod_compra, fecha, direccion, ciudad, num_tarjeta,id_cliente from 
-      compra";
-
-      $res=mysqli_query($link,$sql) 
-      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
-
-      return $res;
-   }
-
-   function consultarClientes(){
-      include_once('../conexion.php');
-      $link=conectar();
-
-      $sql="select id_cliente, nombre, correo, telefono from cliente";
-
-      $res=mysqli_query($link,$sql) 
-      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
-
-      return $res;
-   }
-   
-   function consultarAdmins(){
-      include_once('../conexion.php');
-      $link=conectar();
-
-      $sql="select * from administrador";
-
-      $res=mysqli_query($link,$sql) 
-      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
-
-      return $res;
-   }
-
-   function buscarAdmin($id_admin){
-      include_once('../conexion.php');
-      $link=conectar();
-
-      $cod=$id_admin;
-
-      $sql="select * from administrador where id_admin = '$cod'";
+      $sql="select par.id, par.hora_inicio, par.hora_fin, par.contrincante_1, jugador1.nombre as nombre_1, par.contrincante_2, jugador2.nombre as nombre_2, par.id_torneo
+               FROM partido as par
+               JOIN jugador AS jugador1 ON par.contrincante_1 = jugador1.id
+               JOIN jugador AS jugador2 ON par.contrincante_2 = jugador2.id ";
 
       $res=mysqli_query($link,$sql) 
       or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));

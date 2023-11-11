@@ -19,16 +19,6 @@
     TemplateMo 559 Zay Shop
     https://templatemo.com/tm-559-zay-shop
     -->
-    <script>
-        function myFunction() {
-            document.getElementById("input_esp").innerHTML = '';  
-            let tama=0;
-            tama = document.getElementById('tam').value;
-            for (let i = 0; i < tama; i++) {
-                document.getElementById("input_esp").innerHTML += '<br><input type="text" class="form-control" name="txt_especificacion[]" placeholder="Escriba la especificación '+ (i+1) +'" required>';  
-            }
-        }
-    </script>
 </head>
 
 <body>
@@ -77,91 +67,51 @@
     </nav>
     <!-- Close Header -->
 
-
-
-    <!-- Formulario Crear Jugador-->
+    <!-- Formulario Crear Partido-->
     <div class="container"> <br><br>
-        <h2 class="text-black">Crear Torneo</h2>
-        
-        
+        <h2 class="text-black">Crear Partido</h2>
             
-
-        <form action="./crearTorneo.php" method="GET" class="row g-3">
+        <form action="./crearPartido.php" method="GET" class="row g-3">
             <?php 
                 include('./consultarSQL.php');
                 $cod=$_GET['id'];
-                // $res0=buscartorneo($cod+2);
-                // foreach($res0 as $row0){
-                //    $aux $row0['id'];
+                $id_partido=$_GET['id_partido'];
             ?>
+            <input class="col-2" type="text" name="txt_torneo" value="<?php echo $cod?>" hidden>
 
-            <input class="col-2" type="text" name="txt_torneo" value="<?php echo $cod+1?>" hidden>
-            
-            <div class="col-2">
-                <label for="txt_nombre" class="form-label">Nombre: </label>
-                <input type="text" class="form-control" name="txt_nombre" placeholder="Escriba el nombre del Torneo" required>
+            <div class="col-6">
+                <label for="txt_hora_inicio" class="form-label">Hora de Inicio: </label>
+                <input type="time" class="form-control" name="txt_hora_inicio" placeholder="Escriba la descripción del evento" required>
             </div>
-            <div class="col-10">
-                <label for="txt_descripcion" class="form-label">Descripción: </label>
-                <input type="text" class="form-control" name="txt_descripcion" placeholder="Escriba la descripción del evento" required>
+            <div class="col-6">
+                <label for="txt_hora_fin" class="form-label">Hora de Finalización: </label>
+                <input type="time" class="form-control" name="txt_hora_fin" placeholder="Escriba el precio de inscripción" required>
             </div>
-            <div class="col-4">
-                <label for="txt_precio" class="form-label">Precio: </label>
-                <input type="text" class="form-control" name="txt_precio" placeholder="Escriba el precio de inscripción" required>
-            </div>  
-            <div class="col-4">
-                <label for="txt_fecha" class="form-label">Fecha: </label>
-                <input type="date" class="form-control" name="txt_fecha" placeholder="Escriba la fecha del torneo" required>
-            </div>  
-            <div class="col-4">
-                <label for="txt_tipo" class="form-label">Tipo: </label>
-                <select name="txt_tipo" class="form-control"required>
-                    <option value="Voleibol">Voleibol</option>
-                    <option value="Ajedrez">Ajedrez</option>
-                    <option value="Baloncesto">Baloncesto</option>
-                    <option value="Boxeo">Boxeo</option>
-                    <option value="FIFA_23">FIFA 23</option>
-                    <option value="Futbol">Futbol</option>
-                    <option value="Parques">Parqués</option>
-                    <option value="XBOX360">XBOX360</option>
+            <div class="col-6">
+                <label for="txt_contrincante_1" class="form-label">Contrincante N° 1: </label>
+                <select name="txt_contrincante_1" class="form-control"required>
+                    <option value="" disabled selected hidden>---Seleciona un Jugador---</option>
+                    <?php
+                    $res0=consultarJugadoresAdm();
+                    foreach($res0 as $row){?>
+                        <option value="<?php echo $row['id']?>"><?php echo $row['nombre']?></option>
+                    <?php }?>
                 </select>
-            </div> 
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="">
-                                <label for="txt_organizador" class="form-label">Organizadores: </label>
-                                <select name="txt_organizador" class="form-control"required>
-                                <?php
-
-                                    $res=consultarOrganizadoresAdm();
-                                    foreach($res as $row){
-                                        if ($row['habilitado']=='SI') {?>
-                                        
-                                        <option value="<?php echo $row['id']?>"><?php echo $row['nombre']?></option>
-                                    <?php }}?>
-                                </select>
-                            </div>  
-                        </td>
-                        <td>
-                            <div class="">
-                                <label class="form-label ">Especificaciones (Tenga en cuenta que después no las podrá modificar): </label>
-                                <input type="text"class="form-control" class="col-10" id="tam" placeholder="Escriba número de especificaciones">
-                                <center >
-
-                                <div style= "margin: 1% auto;"></div>
-                                    <input  type="button" value="Agregar especificaciones" id="cal"  onclick="myFunction()" class="btn btn-success">
-                                </center>
-                                <div id="input_esp"></div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            </div>
+            <div class="col-6">
+                <label for="txt_contrincante_2" class="form-label">Contrincante N° 2: </label>
+                <select name="txt_contrincante_2" class="form-control"required>
+                    <option value="" disabled selected hidden>---Seleciona un Jugador---</option>
+                    <?php
+                    $res0=consultarJugadoresAdm();
+                    foreach($res0 as $row){?>
+                        <option value="<?php echo $row['id']?>"> <?php echo $row['nombre']?></option>
+                    <?php }?>
+                </select>
+            </div>
 
             <center>
-                <input type="submit" value="Crear Torneo" name="enviar" class="btn btn-primary">
+                <input type="submit" value="Agregar Partido" class="btn btn-primary">
             </center>
         </form>
     </div>
