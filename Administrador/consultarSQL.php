@@ -218,6 +218,24 @@
       return $res;
    }
 
+   function buscarpartido($id_partido){
+      include_once('../conexion.php');
+      $link=conectar();
+
+      $cod=$id_partido;
+
+      $sql="select par.id, par.hora_inicio, par.hora_fin, par.contrincante_1, jugador1.nombre as nombre_1, par.contrincante_2, jugador2.nombre as nombre_2, par.id_torneo
+                           FROM partido as par
+                           JOIN jugador AS jugador1 ON par.contrincante_1 = jugador1.id
+                           JOIN jugador AS jugador2 ON par.contrincante_2 = jugador2.id 
+               where par.id = '$cod' ";
+
+      $res=mysqli_query($link,$sql) 
+      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+      return $res;
+   }
+
 ?>
 
       <script src="./bootstrap/js/bootstrap.min.js"></script>

@@ -69,22 +69,27 @@
 
     <!-- Formulario Crear Partido-->
     <div class="container"> <br><br>
-        <h2 class="text-black">Crear Partido</h2>
+        <h2 class="text-black">Modificar Partido</h2>
             
-        <form action="./crearPartido.php" method="GET" class="row g-3">
+        <form action="./modificarPartido.php" method="GET" class="row g-3">
             <?php 
                 include('./consultarSQL.php');
                 $cod=$_GET['id'];
+                $id_partido=$_GET['id_partido'];
+
+                $res=buscarpartido($id_partido);
+                foreach($res as $row){
             ?>
             <input class="col-2" type="text" name="txt_torneo" value="<?php echo $cod?>" hidden>
+            <input class="col-2" type="text" name="txt_partido" value="<?php echo $id_partido?>" hidden>
 
             <div class="col-6">
                 <label for="txt_hora_inicio" class="form-label">Hora de Inicio: </label>
-                <input type="time" class="form-control" name="txt_hora_inicio" placeholder="Escriba la descripción del evento" required>
+                <input type="time" class="form-control" name="txt_hora_inicio" value="<?php echo $row['hora_inicio']?>"  required>
             </div>
             <div class="col-6">
                 <label for="txt_hora_fin" class="form-label">Hora de Finalización: </label>
-                <input type="time" class="form-control" name="txt_hora_fin" placeholder="Escriba el precio de inscripción" required>
+                <input type="time" class="form-control" name="txt_hora_fin" value="<?php echo $row['hora_fin']?>" required>
             </div>
             <div class="col-6">
                 <label for="txt_contrincante_1" class="form-label">Contrincante N° 1: </label>
@@ -109,8 +114,9 @@
                 </select>
             </div>
 
+            <?php }?>
             <center>
-                <input type="submit" value="Agregar Partido" class="btn btn-primary">
+                <input type="submit" value="Modificar datos del Partido" class="btn btn-primary">
             </center>
         </form>
     </div>
