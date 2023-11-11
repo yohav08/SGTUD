@@ -93,7 +93,27 @@
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body" >
-                            <h1 class="h2">Torneo de <?php echo $row['tipo']; ?> </h1>
+                            <!-- <button style="display:inline-block; float:right;" type="button" class="btn btn-danger">Danger</button> -->
+                            
+                            <form style="display:inline-block; float:right;" action="" method="GET">
+                                <div  class="row pb-3">
+                                    <div  class="col d-grid">
+                                        <a role="button" class="btn btn-danger" href="./Administrador/generar_reporte.php?id=<?php echo $cod?>">
+                                            Generar Reporte &nbsp
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                                                <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                                                <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                            <h1 class="h2" style="display:inline-block;">Torneo de <?php echo $row['tipo']; ?> 
+                        </h1>
+                            
+
                             <?php
                                 $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
                                 $fecha_1 = explode("-", $row['fecha']);
@@ -149,7 +169,7 @@
                 <h1 class="h1">Partidos</h1>
             </div>
         </div>
-    </div> 
+    </section>
             
 
     <section class="bg-light">

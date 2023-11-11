@@ -44,6 +44,18 @@
       return $res;
    }
 
+   function consultarJugadoresAdm1(){
+      include_once('../conexion.php');
+      $link=conectar();
+
+      $sql="select id, codigo_carrera, nombre, telefono, correo, carrera, genero, habilitado, id_torneo from jugador";
+
+      $res=mysqli_query($link,$sql) 
+      or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+      return $res;
+   }
+
    function buscarjugadoresAdm($id_jugador){
       include_once('../conexion.php');
       $link=conectar();

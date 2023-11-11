@@ -96,10 +96,12 @@
                 <select name="txt_contrincante_1" class="form-control"required>
                     <option value="" disabled selected hidden>---Seleciona un Jugador---</option>
                     <?php
-                    $res0=consultarJugadoresAdm();
-                    foreach($res0 as $row){?>
-                        <option value="<?php echo $row['id']?>"><?php echo $row['nombre']?></option>
-                    <?php }?>
+                    $res_0=consultarJugadoresAdm();
+                    foreach($res_0 as $row){
+                        if ($row['id_torneo'] == $cod) {?>
+
+                        <option value="<?php echo $row['id']?>"> <?php echo $row['nombre']?></option>
+                    <?php }}?>
                 </select>
             </div>
             <div class="col-6">
@@ -107,10 +109,12 @@
                 <select name="txt_contrincante_2" class="form-control"required>
                     <option value="" disabled selected hidden>---Seleciona un Jugador---</option>
                     <?php
-                    $res2=consultarJugadoresAdm();
-                    foreach($res2 as $row2){?>
-                        <option value="<?php echo $row2['id']?>"> <?php echo $row2['nombre']?></option>
-                    <?php }?>
+                    $res_1=consultarJugadoresAdm();
+                    foreach($res_1 as $row){
+                        if ($row['id_torneo'] == $cod) {?>
+
+                        <option value="<?php echo $row['id']?>"> <?php echo $row['nombre']?></option>
+                    <?php }}?>
                 </select>
             </div>
 
