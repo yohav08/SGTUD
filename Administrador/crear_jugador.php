@@ -27,7 +27,7 @@ https://templatemo.com/tm-559-zay-shop
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="../index.php">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.php">
                 SGTUD
             </a>
 
@@ -42,7 +42,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="../index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../about.php">Sobre Nosotros</a>
+                            <a class="nav-link" href="./organizador.php">Organizadores</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../torneos.php">Torneos</a>
@@ -55,7 +55,7 @@ https://templatemo.com/tm-559-zay-shop
 
                  <!-- Acount -> Que solo se pueda iniciar sesión los administradores para la creación de jugadores -->
                 <div class="navbar align-self-center d-flex">
-                    <a class="nav-icon position-relative text-decoration-none" href=".../account.html">
+                    <a class="nav-icon position-relative text-decoration-none" href="account.php">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>

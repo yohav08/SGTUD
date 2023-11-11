@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.php">
                 SGTUD
             </a>
 
@@ -42,7 +42,7 @@
                             <a class="nav-link" href="index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">Sobre Nosotros</a>
+                            <a class="nav-link" href="./Administrador/organizador.php">Organizadores</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="torneos.php">Torneos</a>
@@ -66,8 +66,6 @@
         </div>
     </nav>
     <!-- Close Header -->
-
-
 
     <!-- Formulario Crear Jugador-->
     <div class="container"> <br><br>

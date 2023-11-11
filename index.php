@@ -70,65 +70,6 @@ https://templatemo.com/tm-559-zay-shop
     </nav>
     <!-- Close Header -->
 
-    <!-- Start Featured Product -->
-    <section class="bg-light">
-        <div class="container py-5">
-            <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Torneos de la semana</h1>
-                    <p>
-                        Aquí podrás encontrar los Torneos que se llevaran a cabo durante la siguiente semana.
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="torneo-single.php">
-                            <img src="./assets/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <a href="torneo-single.php" class="h2 text-decoration-none text-dark">Tornero N° 1</a>
-                            <br> <br>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="torneo-single.php">
-                            <img src="./assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <a href="torneo-single.php" class="h2 text-decoration-none text-dark">Tornero N° 2</a>
-                            <br> <br>
-                            <p class="card-text">
-                                Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="torneo-single.php">
-                            <img src="./assets/img/feature_prod_03.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <a href="torneo-single.php" class="h2 text-decoration-none text-dark">Tornero N° 3</a>
-                            <br> <br>
-                            <p class="card-text">
-                                Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Featured Product -->
-
      <!-- Banner -->
      <section class="bg-success py-5">
         <div class="container">

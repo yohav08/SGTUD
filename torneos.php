@@ -42,7 +42,7 @@
                             <a class="nav-link" href="index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">Sobre Nosotros</a>
+                            <a class="nav-link" href="./Administrador/organizador.php">Organizadores</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="torneos.php">Torneos</a>
