@@ -7,8 +7,10 @@ class Login{
 
         //validar si el usuario existe o no
         $sqla="select * from administrador where id_admin='$user'";
+        $sqlc="select * from cliente where id_cliente='$user'";
 
         $resa=mysqli_query($link, $sqla);
+        $resc=mysqli_query($link, $sqlc);
 
         if($row0=mysqli_fetch_array($resa)){
 
@@ -29,7 +31,7 @@ class Login{
                 text :  'Administrador: $nombre[0], Bienvenido al Sistema'
                 }).then((result) => {
                     if(result.isConfirmed){
-                    window.location='./index.php';
+                    window.location='./home.php';
                     }
                 }); </script>";
             }else{
@@ -49,6 +51,46 @@ class Login{
             }
 
         
+        }
+        else if($row3=mysqli_fetch_array($resc)){
+
+            $sql2="select * from cliente where id_cliente='$user' and clave='$pass'";
+            $res2=mysqli_query($link,$sql2);
+            
+            if($row2=mysqli_fetch_array($res2)){
+                $ses= $_SESSION['usuario'];
+                $nombre = mysqli_query($link, "select nombre from cliente where id_cliente='$ses'")->fetch_row();
+                                
+                //se crea la variable de SESION
+                $_SESSION['usuario']=$row2['id_cliente'];
+                echo "
+                <script type='text/javascript'>
+                Swal.fire({
+                icon : 'success',
+                title : 'BIENVENIDO',
+                text :  'Cliente: $nombre[0], Bienvenido al Sistema'
+                }).then((result) => {
+                    if(result.isConfirmed){
+                    window.location='./home.php';
+                    }
+                }); </script>";
+            }
+            else{
+                $_SESSION['usuario']=NULL;
+                echo "
+                <script type='text/javascript'>
+                Swal.fire({
+                icon : 'error',
+                title : 'ERROR!!',
+                text :  ' el usuario #$user o contraseña  no son correctos'
+                }).then((result) => {
+                    if(result.isConfirmed){
+                    window.location='./index.php';
+                    }
+                }); </script>";
+
+            }
+
         }else{
             echo "
                 <script type='text/javascript'>

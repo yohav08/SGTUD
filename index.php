@@ -41,6 +41,11 @@ https://templatemo.com/tm-559-zay-shop
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                    <?php 
+                        include('./Administrador/consultarSQL.php');
+                        $cod=$_GET['id'];
+                    ?>
+                    
                         <li class="nav-item">
                             <a class="nav-link" href="index.php">Inicio</a>
                         </li>

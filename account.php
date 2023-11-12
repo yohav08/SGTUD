@@ -25,9 +25,9 @@
         <div class="main">
             <div class="col-md-6 col-sm-12">
                 <div class="login-form">
-                    <form name="form" action="verifica.php" method="POST">
+                    <form name="form" action="verifica.php" method="GET">
                         <div class="form-group">
-                            <label for="user">Usuario</label>
+                            <label for="user">Codigo estudiantil</label>
                             <input type="text" name="user" class="form-control" placeholder="Usuario" required>
                         </div>
                         <div class="form-group">

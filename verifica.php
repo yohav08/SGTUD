@@ -1,10 +1,72 @@
-<?php
-    include('./class/class_log.php');
-    //creamos el objeto de la clase Login
-    $log=new Login();
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.min.css " rel="stylesheet">
+            
+    </head>
+    <body>
 
-    //traemos los datos del formulario de login
-    $user=$_REQUEST['user'];
-    $pass=$_REQUEST['passw'];
-    $log->validar($user,$pass);
-?>
+<?php
+
+    function buscarorg($id_organizador){
+        include_once('../conexion.php');
+        $link=conectar();
+
+        $cod=$id_organizador;
+
+        $sql="select codigo_carrera, contrasena from organizador  where id = '$cod'";
+        $res=mysqli_query($link,$sql) 
+        or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+        return $res;
+    }
+
+    include('./conexion.php');
+    $link=conectar();
+    $cod_carrera=$_GET['user'];
+    $contrasena=$_GET['passw'];
+
+    $res0=buscarorg($cod_carrera, $contrasena);
+    foreach($res0 as $row){
+
+    }
+
+    $sqla="select cod_carrera, contrasena from organizador where cod_carrera='$cod_carrera'";
+    $resa=mysqli_query($link, $sqla);
+    or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+
+
+        
+            echo "
+                <script type='text/javascript'>
+                    Swal.fire({
+                        title: '¿Estas seguro?',
+                        text: '¡No podrás revertir esta acción!',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, Eliminar',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location='../torneos.php';
+                        }
+                    });
+                </script>";
+
+            $sql="delete from partido where id='$id_partido' and id_torneo='$cod'";
+            $res=mysqli_query($link,$sql) 
+            or die("ERROR EN LA CONSULTA $sql".mysqli_error($link));
+        ?>
+        
+    
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="./sw/dist/sweetalert2.min.js"></script>
+    </body>
+    </html>

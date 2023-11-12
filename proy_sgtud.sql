@@ -18,7 +18,8 @@ CREATE TABLE organizador(
     correo varchar(50) not null,
     habilitado varchar(6),
     id_torneo int,
-    foreign key (id_torneo) references torneo (id)
+    foreign key (id_torneo) references torneo (id),
+    contrasena varchar(50) not null
 );
 
 CREATE TABLE especificacion(
@@ -67,11 +68,11 @@ CREATE TABLE partido(
     VALUES ('Torneo de Baloncesto en el Lectus','Es un torneo de Baloncesto al que todos están invitados','4000','Baloncesto','2023-11-05');
 
 -- ORGANIZADOR
-    INSERT INTO organizador(codigo_carrera, nombre, telefono, correo, habilitado, id_torneo) 
-    VALUES ('20202578111','Daniel Aguilar','3104855100','daguilarm@udistrital.edu.co', 'SI', '1');
+    INSERT INTO organizador(codigo_carrera, nombre, telefono, correo, habilitado, id_torneo, contrasena) 
+    VALUES ('20202578111','Daniel Aguilar','3104855100','daguilarm@udistrital.edu.co', 'SI', '1', '123');
 
-    INSERT INTO organizador(codigo_carrera, nombre, telefono, correo, habilitado, id_torneo) 
-    VALUES ('20202578123','Diana Avila','3104839999','adavilam@udistrital.edu.co', 'SI', '2');
+    INSERT INTO organizador(codigo_carrera, nombre, telefono, correo, habilitado, id_torneo, contrasena) 
+    VALUES ('20202578123','Diana Avila','3104839999','adavilam@udistrital.edu.co', 'SI', '2', '123');
 
 -- ESPECIFICACIONES
     INSERT INTO especificacion(especificacion, id_torneo) 
