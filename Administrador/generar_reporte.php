@@ -92,7 +92,7 @@ https://templatemo.com/tm-559-zay-shop
             <section class="bg-light">
                 <div class="container">
                     <div class="row text-center">
-                        <h1 class="h2">Inscritos (habilitados)</h1> <br><br>
+                        <h1 class="h2">Jugadores habilitados para inscripción al torneo</h1> <br><br>
                     </div>
                 </div>
 
