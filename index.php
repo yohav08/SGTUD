@@ -43,7 +43,7 @@ https://templatemo.com/tm-559-zay-shop
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                     <?php 
                         include('./Administrador/consultarSQL.php');
-                        $cod=$_GET['id'];
+                        // $cod=$_GET['id'];
                     ?>
                     
                         <li class="nav-item">
