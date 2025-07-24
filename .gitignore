@@ -1,0 +1,16 @@
+# Bootstrap CSS y JS
+assets/css/bootstrap.min.css
+assets/js/bootstrap.bundle.min.js
+
+# jQuery y jQuery Migrate
+assets/js/jquery-1.11.0.min.js
+assets/js/jquery-migrate-1.2.1.min.js
+
+# FontAwesome CSS
+assets/css/fontawesome.css
+assets/css/fontawesome.min.css
+
+# FontAwesome Webfonts
+assets/webfonts/fa-solid-900.woff2
+assets/webfonts/fa-regular-400.woff2
+assets/webfonts/fa-brands-400.woff2
