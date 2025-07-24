@@ -1,15 +1,13 @@
-# SGTUD - Sistema de Gestión de Torneos de la Universidad Distrital
-
+# 🏆 SGTUD - Sistema de Gestión de Torneos de la Universidad Distrital
 **SGTUD** es una plataforma web desarrollada para la gestión de torneos deportivos en la Universidad Distrital. Su objetivo es facilitar la inscripción, visualización y administración de torneos por parte de los estudiantes y organizadores. 
 
 ## 📌 Características principales
-
-- 📋 Registro e inscripción de jugadores a torneos.
-- 📅 Visualización de torneos disponibles.
-- 🔐 Sistema de verificación y control de datos.
-- 🗂 Gestión de torneos por parte de administradores.
-- 📊 Conexión con base de datos para persistencia de la información.
-- 🎨 Interfaz basada en Bootstrap y componentes modernos.
+- Registro e inscripción de jugadores a torneos.
+- Visualización de torneos disponibles.
+- Sistema de verificación y control de datos.
+- Gestión de torneos por parte de administradores.
+- Conexión con base de datos para persistencia de la información.
+- Interfaz basada en Bootstrap y componentes modernos.
 
 ## 🚀 Ejecución del proyecto
 
