@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "📦 Iniciando descarga de dependencias..."
+
 # Crear carpetas si no existen
 mkdir -p assets/css assets/js assets/webfonts
 
