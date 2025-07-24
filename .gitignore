@@ -1,0 +1,12 @@
+# Ignorar librerías CSS de terceros
+assets/css/bootstrap.min.css
+assets/css/fontawesome.css
+assets/css/fontawesome.min.css
+
+# Ignorar librerías JS de terceros
+assets/js/bootstrap.bundle.min.js
+assets/js/jquery-1.11.0.min.js
+assets/js/jquery-migrate-1.2.1.min.js
+
+# Ignorar fuentes descargadas (FontAwesome)
+assets/webfonts/
