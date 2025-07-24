@@ -7,7 +7,7 @@
 - Sistema de verificación y control de datos.
 - Gestión de torneos por parte de administradores.
 - Conexión con base de datos para persistencia de la información.
-- Interfaz basada en Bootstrap y componentes modernos.
+- Interfaz basada en Bootstrap y componentes modernos(implementando SweetAlert2).
 
 ## 🚀 Ejecución del proyecto
 
@@ -28,3 +28,5 @@ Importa el archivo bd_sgtud.sql desde phpMyAdmin usando XAMPP.
 Abre el navegador y accede a: http://localhost/SGTUD/index.php
 
 > **Note:** Asegúrate de colocar el proyecto dentro del directorio htdocs de XAMPP para que funcione correctamente.
+
+
